@@ -39,15 +39,16 @@ plugins {
 }
 
 application {
-    mainClass.set("tk.kt.LWKGLVulkanTutorial.engine.MainKt") // Replace with your main class
+    mainClass.set("tk.kt.LWKGLVulkanTutorial.Main") // Replace with your main class
 }
 
 tasks.jar {
     manifest {
-        attributes["Main-Class"] = "tk.kt.LWKGLVulkanTutorial.engine.MainKt" // Replace with your main class
+        attributes["Main-Class"] = "tk.kt.LWKGLVulkanTutorial.MainKt" // Replace with your main class
     }
     from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    archiveFileName.set("${project.name}-${version}-${lwjglNatives}.jar")
 }
 
 group = "tk.kt"
@@ -118,4 +119,6 @@ sourceSets {
         }
     }
 }
+
+
 
